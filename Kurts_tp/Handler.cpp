@@ -44,3 +44,37 @@ void handler::print()
         array[i].print();
     }
 }
+
+void handler::add()
+{
+    car tek;
+    array.push_back(tek);
+    cout << "Новый автомобиль успешно добавлен" << endl;
+    ofstream out(filename);
+    out << array.size() << endl;
+    for (size_t i = 0; i < array.size(); i++)
+    {
+        array[i].save(out);
+    }
+    out.close();
+}
+
+void handler::del()
+{
+    int input;
+    for (size_t i = 1; i < array.size(); i++)
+    {
+        cout << "[" << i << "] " << array[i].getModel() << endl;
+    }
+    cout << "Ваш выбор >";
+    cin >> input;
+    array.erase(array.begin() + input);
+    cout << "Автомобиль успешно утилизирован" << endl;
+    ofstream out(filename);
+    out << array.size() << endl;
+    for (size_t i = 1; i < array.size(); i++)
+    {
+        array[i].save(out);
+    }
+    out.close();
+}
