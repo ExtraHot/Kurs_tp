@@ -5,9 +5,17 @@ using namespace std;
 
 class handler
 {
-	// handler* next;
-   //  string filename;
-	// vector<car> array;
+	 handler* next;
+     string filename;
+	 vector<car> array;
 public:
-private:
+    handler(string filename);
+    void find_automobile(string model);
+    void print();
+    void add();
+    void del();
+
+    handler* getNextPtr();
+    void set_next(handler* next_handler);
+
 };
