@@ -29,3 +29,18 @@ handler::handler(string filename)
     }
     fin.close();
 }
+
+void handler::set_next(handler* next_handler)
+{
+    this->next = next_handler; // переключение на следующий автомобиль
+}
+
+void handler::print()
+{
+    if (array.size() == 0)
+        throw (string)"¬ данном месте нет автомобилей";
+    for (size_t i = 0; i < array.size(); i++)
+    {
+        array[i].print();
+    }
+}
