@@ -28,6 +28,20 @@ int main(int argc, char const* argv[])
                 << "0) Выход" << endl
                 << "> ";
 
+            while (!(cin >> input) || (cin.peek() != '\n'))
+            {
+                cin.clear();
+                while (cin.get() != '\n');
+                cout << "Ошибка ввода числа!\n> ";
+            }
+            switch (input)
+            {
+            case 1:
+                cout << "Введите название автомабиля: " << endl;
+                cin >> model;
+                salon->find_auto(model);
+                break;
+            }
 
         }
 
