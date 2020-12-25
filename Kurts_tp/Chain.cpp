@@ -2,11 +2,14 @@
 
 Chain::Chain(string filename)
 {
-    this->filename = filename;
-    next = nullptr;
     string str;
     int count;
+
     ifstream fin(filename);
+
+    this->filename = filename;
+    next = nullptr;
+   
     if (!fin.is_open())
     {
         throw (string)"Ошибка открытия файлы";
@@ -43,7 +46,7 @@ void Chain::set_next(Chain* next_handler)
 void Chain::print()
 {
     if (array.size() == 0)
-        throw (string)"Автомобиль не обнаружен";
+        throw (string)"Такого автомобиля нет в нашей базе данных";
     for (size_t i = 0; i < array.size(); i++)
     {
         array[i].print();
@@ -67,11 +70,11 @@ void Chain::add()
 void Chain::del()
 {
     int input;
-    for (size_t i = 1; i < array.size(); i++)
+    for (size_t i = 0; i < array.size(); i++)
     {
         cout << "[" << i << "] " << array[i].getModel() << endl;
     }
-    cout << "Ваш выбор >";
+    cout << "Ваш выбор: ";
     cin >> input;
     array.erase(array.begin() + input);
     cout << "Данный автомобиль был удален" << endl;
@@ -88,22 +91,22 @@ void Chain::find_auto(std::string model)
 {
     bool found = false;
     string buf;
-    for (size_t i = 1; i < array.size(); i++)
+    for (size_t i = 0; i < array.size(); i++)
     {
         if (model.compare(array[i].getModel()) == 0)
         {
             found = true;
-            cout << this->filename << ": найден!" << endl;
+            cout << this->filename << ": Найден!" << endl;
             array[i].print();
         }
     }
     if (!found)
     {
         if (next != nullptr) {
-            cout << this->filename << ": отправляю запрос выше по иерархии" << endl;
+            cout << this->filename << ": Запрос был отправлен дальше по иерархии" << endl;
             next->find_auto(model);
         }
         else
-            cout << this->filename << ": не найден" << endl;
+            cout << this->filename << ": Ничего по запросу не найдено " << endl;
     }
 }
