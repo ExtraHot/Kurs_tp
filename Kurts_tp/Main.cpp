@@ -3,7 +3,7 @@
 int main(int argc, char const* argv[])
 {
     setlocale(LC_ALL, "Rus");
-    system("chcp 1251");
+    //system("chcp 1251");
 
    
 
