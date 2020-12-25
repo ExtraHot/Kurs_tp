@@ -30,6 +30,11 @@ Chain::Chain(string filename)
     fin.close();
 }
 
+Chain* Chain::getNextPtr()
+{
+    return next;
+}
+
 void Chain::set_next(Chain* next_handler)
 {
     this->next = next_handler; // переключение на следующий автомобиль

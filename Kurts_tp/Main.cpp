@@ -9,16 +9,17 @@ int main(int argc, char const* argv[])
 
     try 
     {
+        string mark;
         Chain* salon = new Chain("salon");
         salon->set_next(new Chain("dealer"));
         salon->getNextPtr()->set_next(new Chain("fabrique"));
         Chain* ptr = nullptr;
         int input;
-        string model;
+      
         while (1)
         {
             system("cls");
-            cout << "\t\t||Сервисный центр Hyindai приветсвует вас!||" << endl<< "\t\t\t<Выберете нужное вам действие>"<<endl;
+            cout << "\t\t\t\t\t||Сервисный центр Hyindai приветсвует вас!||" << endl<< "\t\t\t\t\t\t<Выберете нужное вам действие>"<<endl;
             cout << "1) Поиск нужного автомобиля" << endl
                 << "2) Показать модели автомобиля" << endl
                 << "3) Добавление автомобиля" << endl
@@ -36,8 +37,8 @@ int main(int argc, char const* argv[])
             {
             case 1:
                 cout << "Введите название автомабиля(english): " << endl;
-                cin >> model;
-                salon->find_auto(model);
+                cin >> mark;
+                salon->find_auto(mark);
                 break;
             case 2:
 
@@ -102,15 +103,46 @@ int main(int argc, char const* argv[])
                 ptr->add();
                 break;
       
+            case 4:
+                system("cls");
+                cout << "Откуда вы хотите убрать автомобиль?" << endl
+                    << "1) В салоне" << endl
+                    << "2) В центре дилера" << endl
+                    << "3) В производственном цехе" << endl
+                    << "Ваш выбор : ";
+                while (!(cin >> input) || (cin.peek() != '\n'))
+                {
+                    cin.clear();
+                    while (cin.get() != '\n');
+                    cout << "Ошибка ввода числа!\n> ";
+                }
+                switch (input)
+                {
+                case 1:
+                    ptr = salon;
+                    break;
+                case 2:
+                    ptr = salon->getNextPtr();
+                    break;
+                case 3:
+                    ptr = salon->getNextPtr()->getNextPtr();
+                    break;
+                default:
+                    break;
+                }
+                ptr->del();
+                break;
+            case 0:
+                return 0;
+            default:
+                break;
+            }
+            system("pause");
                 
             }
 
-        }
+     }
 
-
-
-
-    }
     catch (string err)
     {
         cout << err << endl;
