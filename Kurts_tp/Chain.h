@@ -3,19 +3,20 @@
 
 using namespace std;
 
-class handler
+class Chain
 {
-	 handler* next;
+	 Chain* next;
      string filename;
 	 vector<car> array;
 public:
-    handler(string filename);
+    Chain(string filename);
+
     void find_auto(string model);
     void print();
     void add();
     void del();
 
-    handler* getNextPtr();
-    void set_next(handler* next_handler);
+    Chain* getNextPtr();
+    void set_next(Chain* next_handler);
 
 };

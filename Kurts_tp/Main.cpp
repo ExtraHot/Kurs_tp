@@ -1,4 +1,4 @@
-#include "handler.h"
+#include "Chain.h"
 
 int main(int argc, char const* argv[])
 {
@@ -9,10 +9,10 @@ int main(int argc, char const* argv[])
 
     try 
     {
-        handler* salon = new handler("salon");
-        salon->set_next(new handler("dealer"));
-        salon->getNextPtr()->set_next(new handler("fabrique"));
-        handler* ptr = nullptr;
+        Chain* salon = new Chain("salon");
+        salon->set_next(new Chain("dealer"));
+        salon->getNextPtr()->set_next(new Chain("fabrique"));
+        Chain* ptr = nullptr;
         int input;
         string model;
         while (1)
@@ -20,12 +20,10 @@ int main(int argc, char const* argv[])
             system("cls");
             cout << "\t\t||Сервисный центр Hyindai приветсвует вас!||" << endl<< "\t\t\t<Выберете нужное вам действие>"<<endl;
             cout << "1) Поиск нужного автомобиля" << endl
-                << "2) Показать модели находящиеся в салоне" << endl
-                << "3) Показать модели находящиеся у дилера" << endl
-                << "4) Показать модели находящиеся на производстве" << endl
-                << "5) Добавление автомобиля" << endl
-                << "6) Удаление автомобиля из базы" << endl
-                << "0) Выход" << endl
+                << "2) Показать модели автомобиля" << endl
+                << "3) Добавление автомобиля" << endl
+                << "4) Удаление автомобиля из базы" << endl
+                << "5) Выход" << endl
                 << "> ";
 
             while (!(cin >> input) || (cin.peek() != '\n'))
@@ -37,10 +35,74 @@ int main(int argc, char const* argv[])
             switch (input)
             {
             case 1:
-                cout << "Введите название автомабиля: " << endl;
+                cout << "Введите название автомабиля(english): " << endl;
                 cin >> model;
                 salon->find_auto(model);
                 break;
+            case 2:
+
+                system("cls");
+                cout << "Где вы хотите посмотреть автомобили? " << endl
+                    << "1 -> В салоне" << endl
+                    << "2 -> В центре дилера" << endl
+                    << "3 -> В производственном цеху" << endl
+                    << "Ваш выбор : ";
+
+                while (!(cin >> input) || (cin.peek() != '\n'))
+                {
+                    cin.clear();
+                    while (cin.get() != '\n');
+                    cout << "Ошибка ввода числа!\n> ";
+                }
+                switch (input)
+                {
+                case 1:
+                    salon->print();
+                    break;
+                case 2:
+                    salon->getNextPtr()->print();
+                    break;
+                case 3:
+                    salon->getNextPtr()->getNextPtr()->print();
+                    break;
+                default:
+                    break;
+                }
+
+                
+            case 3:
+
+                system("cls");
+                cout << "Куда нужно добавить Авто?" << endl
+                    << "1 -> В салон" << endl
+                    << "2 -> В центр дилера" << endl
+                    << "3 -> В производственный цех" << endl
+                    << "Ваш выбор : ";
+
+                while (!(cin >> input) || (cin.peek() != '\n'))
+                {
+                    cin.clear();
+                    while (cin.get() != '\n');
+                    cout << "Ошибка ввода числа!\n> ";
+                }
+                switch (input)
+                {
+                case 1:
+                    ptr = salon;
+                    break;
+                case 2:
+                    ptr = salon->getNextPtr();
+                    break;
+                case 3:
+                    ptr = salon->getNextPtr()->getNextPtr();
+                    break;
+                default:
+                    break;
+                }
+                ptr->add();
+                break;
+      
+                
             }
 
         }

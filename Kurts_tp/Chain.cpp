@@ -1,6 +1,6 @@
-#include "handler.h"
+#include "Chain.h"
 
-handler::handler(string filename)
+Chain::Chain(string filename)
 {
     this->filename = filename;
     next = nullptr;
@@ -30,12 +30,12 @@ handler::handler(string filename)
     fin.close();
 }
 
-void handler::set_next(handler* next_handler)
+void Chain::set_next(Chain* next_handler)
 {
     this->next = next_handler; // переключение на следующий автомобиль
 }
 
-void handler::print()
+void Chain::print()
 {
     if (array.size() == 0)
         throw (string)"Автомобиль не обнаружен";
@@ -45,7 +45,7 @@ void handler::print()
     }
 }
 
-void handler::add()
+void Chain::add()
 {
     car tek;
     array.push_back(tek);
@@ -59,7 +59,7 @@ void handler::add()
     out.close();
 }
 
-void handler::del()
+void Chain::del()
 {
     int input;
     for (size_t i = 1; i < array.size(); i++)
@@ -79,7 +79,7 @@ void handler::del()
     out.close();
 }
 
-void handler::find_auto(std::string model)
+void Chain::find_auto(std::string model)
 {
     bool found = false;
     string buf;
