@@ -12,7 +12,7 @@ Chain::Chain(string filename)
    
     if (!fin.is_open())
     {
-        throw (string)"Ошибка открытия файлы";
+        throw (string)"\x1b[31mОшибка открытия файлы\x1b[0m";
     }
     if (fin.peek() == EOF)
     {
@@ -22,7 +22,7 @@ Chain::Chain(string filename)
     {
         getline(fin, str);
         if (str.empty())
-            throw (string)"Ошибка чтения файла";
+            throw (string)"\x1b[31mОшибка чтения файла\x1b[0m";
         count = stoi(str);
     }
     for (size_t i = 0; i < count; i++)
@@ -46,7 +46,7 @@ void Chain::set_next(Chain* next_handler)
 void Chain::print()
 {
     if (array.size() == 0)
-        throw (string)"Такого автомобиля нет в нашей базе данных";
+        throw (string)"\x1b[31mТакого автомобиля нет в нашей базе данных\x1b[0m";
     for (size_t i = 0; i < array.size(); i++)
     {
         array[i].print();
@@ -57,7 +57,7 @@ void Chain::add()
 {
     car tek;
     array.push_back(tek);
-    cout << "Автомобиль был успешно добавлен" << endl;
+    cout << "\x1b[32mАвтомобиль был успешно добавлен\x1b[0m" << endl;
     ofstream out(filename);
     out << array.size() << endl;
     for (size_t i = 0; i < array.size(); i++)
@@ -72,12 +72,12 @@ void Chain::del()
     int input;
     for (size_t i = 0; i < array.size(); i++)
     {
-        cout << "[" << i << "] " << array[i].getModel() << endl;
+        cout << "Введите " << i << " для удаления: " << array[i].getModel() << endl;
     }
     cout << "Ваш выбор: ";
     cin >> input;
     array.erase(array.begin() + input);
-    cout << "Данный автомобиль был удален" << endl;
+    cout << "\x1b[32mДанный автомобиль был удален\x1b[0m" << endl;
     ofstream out(filename);
     out << array.size() << endl;
     for (size_t i = 1; i < array.size(); i++)
@@ -96,17 +96,17 @@ void Chain::find_auto(std::string model)
         if (model.compare(array[i].getModel()) == 0)
         {
             found = true;
-            cout << this->filename << ": Найден!" << endl;
+            cout << this->filename << "\x1b[32m: Автомобиль обнаружен\x1b[0m!" << endl;
             array[i].print();
         }
     }
     if (!found)
     {
         if (next != nullptr) {
-            cout << this->filename << ": Запрос был отправлен дальше по иерархии" << endl;
+            cout << this->filename << "\x1b[33m: Запрос был отправлен дальше по иерархии\x1b[0m" << endl;
             next->find_auto(model);
         }
         else
-            cout << this->filename << ": Ничего по запросу не найдено " << endl;
+            cout << this->filename << ": \x1b[31mНичего по запросу не найдено\x1b[0m " << endl;
     }
 }
