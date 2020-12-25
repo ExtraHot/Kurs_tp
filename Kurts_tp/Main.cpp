@@ -69,6 +69,7 @@ int main(int argc, char const* argv[])
                 default:
                     break;
                 }
+                break;
 
                 
             case 3:
