@@ -8,8 +8,6 @@ int main(int argc, char const* argv[])
     setlocale(LC_ALL, "Rus");
     system("chcp 1251");
  
-   
-
     try 
     {
         string mark;
@@ -48,7 +46,7 @@ int main(int argc, char const* argv[])
             case 2:
 
                 system("cls");
-                cout << "Где вы хотите посмотреть автомобили? " << endl
+                cout << "\x1b[32mГде вы хотите посмотреть автомобили?\x1b[0m " << endl
                     << "1 -> В салоне" << endl
                     << "2 -> В центре дилера" << endl
                     << "3 -> В производственном цеху" << endl
@@ -58,7 +56,7 @@ int main(int argc, char const* argv[])
                 {
                     cin.clear();
                     while (cin.get() != '\n');
-                    cout << "\x1b[31mОшибка ввода числа!\x1b[0m\n> ";
+                    cout << "\x1b[33mОшибка ввода числа!\x1b[0m\n> ";
                 }
                 switch (input)
                 {
@@ -80,7 +78,7 @@ int main(int argc, char const* argv[])
             case 3:
 
                 system("cls");
-                cout << "Куда нужно добавить Авто?" << endl
+                cout << "\x1b[32mКуда нужно добавить Авто?\x1b[0m" << endl
                     << "Что-бы добавить в салон нажмите-> 1" << endl
                     << "Что-бы добавить в центр дилера нажмите-> 2" << endl
                     << "Что-бы добавить в цех производства нажмите-> 3" << endl
@@ -111,7 +109,7 @@ int main(int argc, char const* argv[])
 
             case 4:
                 system("cls");
-                cout << "Откуда вы хотите убрать автомобиль?" << endl
+                cout << "\x1b[31mОткуда вы хотите убрать автомобиль?\x1b[0m" << endl
                     << "Что-бы удалить из салона нажмите-> 1" << endl
                     << "Что-бы удалить из центра дилера нажмите-> 2" << endl
                     << "Что-бы удалить из цеха производства нажмите-> 3" << endl

@@ -16,5 +16,5 @@ public:
 	car(ifstream& fin);
 	void print();
 	void save(ofstream& fout);
-	string getModel();
+	string getMark();
 };

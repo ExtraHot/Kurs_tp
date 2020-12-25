@@ -72,7 +72,7 @@ void Chain::del()
     int input;
     for (size_t i = 0; i < array.size(); i++)
     {
-        cout << "Введите " << i << " для удаления: " << array[i].getModel() << endl;
+        cout << "Введите " << i << " для удаления: " << array[i].getMark() << endl;
     }
     cout << "Ваш выбор: ";
     cin >> input;
@@ -93,10 +93,10 @@ void Chain::find_auto(std::string model)
     string buf;
     for (size_t i = 0; i < array.size(); i++)
     {
-        if (model.compare(array[i].getModel()) == 0)
+        if (model.compare(array[i].getMark()) == 0)
         {
             found = true;
-            cout <<"\x1b[32m: Автомобиль обнаружен\x1b[0m! в месте "<< this->filename << endl;
+            cout <<"\x1b[32m: Автомобиль обнаружен!\x1b[0m в месте "<< this->filename << endl;
             array[i].print();
         }
     }

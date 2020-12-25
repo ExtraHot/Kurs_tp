@@ -37,7 +37,7 @@ void car::print()
 }
 
 
-string car::getModel()
+string car::getMark()
 {
     return info[0];
 }
