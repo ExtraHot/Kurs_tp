@@ -22,7 +22,7 @@ car::car()
     while (cin.get() != '\n');
     for (size_t i = 0; i < 17; i++)// Ввод со строки
     {
-        cout << STATS[i] << ": ";
+        cout << STATS[i] << "-> ";
         getline(cin, info[i]);
     }
 }
@@ -31,7 +31,7 @@ void car::print()
 {
     for (size_t i = 0; i < 17; i++)// Вывод в строку
     {
-        cout << STATS[i] << ": " << info[i] << std::endl;
+        cout << STATS[i] << "-> |" << info[i] <<"|" << endl;
     }
     cout << endl;
 }

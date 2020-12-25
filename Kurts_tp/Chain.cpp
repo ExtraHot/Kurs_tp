@@ -96,7 +96,7 @@ void Chain::find_auto(std::string model)
         if (model.compare(array[i].getModel()) == 0)
         {
             found = true;
-            cout << this->filename << "\x1b[32m: Автомобиль обнаружен\x1b[0m!" << endl;
+            cout <<"\x1b[32m: Автомобиль обнаружен\x1b[0m! в месте "<< this->filename << endl;
             array[i].print();
         }
     }
@@ -107,6 +107,6 @@ void Chain::find_auto(std::string model)
             next->find_auto(model);
         }
         else
-            cout << this->filename << ": \x1b[31mНичего по запросу не найдено\x1b[0m " << endl;
+            cout << this->filename << ": \x1b[31mЗапросы выплнены. Искомый результат не был обнаружен, автомобиль отсутвует.\x1b[0m " << endl;
     }
 }
