@@ -10,9 +10,9 @@ class Chain
      string filename;
 public:
     Chain(string filename);
-    Chain* getNextPtr();
-    void set_next(Chain* next_handler);
-    void find_auto(string model);
+    Chain* getNextPtr(); // Getter
+    void set_next(Chain* next_Chain);// Setter
+    void find_auto(string mark);
     void print();
     void add();
     void del();

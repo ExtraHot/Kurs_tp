@@ -14,7 +14,9 @@ class car
 public:
 	car();
 	car(ifstream& fin);
+
 	void print();
 	void save(ofstream& fout);
-	string getMark();
+
+	string getMark();// Getter
 };

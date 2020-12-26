@@ -22,7 +22,8 @@ int main(int argc, char const* argv[])
             try
             {
             system("cls");
-            cout << "\t\t\t\t\t\x1b[31m||Сервисный центр Hyundai приветсвует вас!||" << endl << "\t\t\t\t\t       <Выберете нужное вам действие>\x1b[0m" << endl;
+            cout << "\t\t\t\t\t\x1b[31m||Сервисный центр Hyundai приветсвует вас!||" << endl 
+                << "\t\t\t\t\t       <Выберете нужное вам действие>\x1b[0m" << endl;
             cout << "\x1b[33m1) |Поиск нужного автомобиля|" << endl
                 << "2) |Показать модели автомобилeй|" << endl
                 << "3) |Добавление автомобиля|" << endl
@@ -143,7 +144,7 @@ int main(int argc, char const* argv[])
             }
             system("pause");
         }
-            catch (string err)
+            catch (string err) // Обработчик искоючений
             {
                 cout << err << endl;
                 system("pause");

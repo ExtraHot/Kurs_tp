@@ -43,17 +43,17 @@ void Chain::set_next(Chain* next_handler)
     this->next = next_handler; // переключение на следующий автомобиль
 }
 
-void Chain::print()
+void Chain::print()// Вывод информации об авто
 {
     if (array.size() == 0)
-        throw (string)"\x1b[31mТакого автомобиля нет в нашей базе данных\x1b[0m";
+        throw (string)"\x1b[31mАвтомобиль отсутствует в данном месте\x1b[0m";
     for (size_t i = 0; i < array.size(); i++)
     {
         array[i].print();
     }
 }
 
-void Chain::add()
+void Chain::add() // Добавление авто в класс car
 {
     car tek;
     array.push_back(tek);
@@ -67,7 +67,7 @@ void Chain::add()
     out.close();
 }
 
-void Chain::del()
+void Chain::del()// Удаление авто из класса car
 {
     int input;
     for (size_t i = 0; i < array.size(); i++)
@@ -87,7 +87,7 @@ void Chain::del()
     out.close();
 }
 
-void Chain::find_auto(std::string model)
+void Chain::find_auto(std::string model) // Поиск авто
 {
     bool found = false;
     string buf;
